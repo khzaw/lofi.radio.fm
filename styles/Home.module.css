@@ -1,5 +1,5 @@
 .container {
-  /* background-color: #000000; */
+  background-color: #000000;
   min-height: 100vh;
   padding: 0 0.5rem;
   display: flex;
@@ -39,11 +39,6 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-}
-
-.title a {
-  color: #0070f3;
-  text-decoration: none;
 }
 
 .title a:hover,
@@ -130,11 +125,11 @@
 
 @keyframes scaleIn {
   from {
-    transform: scale(.5,.5);
-    opacity: .5;
+    transform: scale(0.5, 0.5);
+    opacity: 0.5;
   }
   to {
-    transform: scale(2.5,2.5);
+    transform: scale(2.5, 2.5);
     opacity: 0;
   }
 }
@@ -145,6 +140,5 @@
   width: 150px;
   height: 150px;
   opacity: 0;
-  animation: scaleIn 4s infinite cubic-bezier(.36,.11.89,.32);
+  animation: scaleIn 4s infinite cubic-bezier(0.36, 0.11.89, 0.32);
 }
-

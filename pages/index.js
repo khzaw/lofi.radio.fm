@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { Play, Pause } from "react-feather";
 
-import styles from "../styles/Home.module.css";
 import loadYTAPI from "../youtube";
+import styles from "../styles/Home.module.css";
 
 const ID = "5qap5aO4i9A";
 
@@ -12,6 +12,10 @@ export default function Home() {
   const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
 
+  const onPlayerReady = () => {
+    setReady(true);
+  };
+
   const onClick = () => {
     setPlaying((prev) => !prev);
     if (!playing) {
@@ -19,10 +23,6 @@ export default function Home() {
     } else {
       player.current.pauseVideo();
     }
-  };
-
-  const onPlayerReady = () => {
-    setReady(true);
   };
 
   useEffect(async () => {
@@ -50,15 +50,13 @@ export default function Home() {
   return (
     <main className={styles.container}>
       <div ref={videoEl} className={styles.video} />
-      {ready && (
-        <button onClick={onClick} className={styles.musicButton}>
-          {playing ? <Pause size={56} /> : <Play size={56} />}
-        </button>
-      )}
-      <div className={styles.circle} style={{ animationDelay: "0s" }} />
-      <div className={styles.circle} style={{ animationDelay: "1s" }} />
-      <div className={styles.circle} style={{ animationDelay: "2s" }} />
-      <div className={styles.circle} style={{ animationDelay: "3s" }} />
+      <div>
+        {ready && (
+          <button onClick={onClick} className={styles.musicButton}>
+            {playing ? <Pause size={56} /> : <Play size={56} />}
+          </button>
+        )}
+      </div>
     </main>
   );
 }
